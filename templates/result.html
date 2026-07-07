@@ -1,0 +1,944 @@
+{% extends "base.html" %}
+
+{% block title %}Scan Result{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="glass-card">
+
+        <!-- ========================= -->
+        <!-- Header -->
+        <!-- ========================= -->
+
+        <div class="text-center mb-5">
+
+            <div class="mb-3">
+
+                <i class="bi bi-shield-check display-3 text-success"></i>
+
+            </div>
+
+            <h1 class="fw-bold">
+
+                Scan Result
+
+            </h1>
+
+            <p class="text-secondary">
+
+                Intelligent Phishing Website Detection Report
+
+            </p>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- URL -->
+        <!-- ========================= -->
+
+        <div class="card-dark mb-4">
+
+            <h5>
+
+                <i class="bi bi-link-45deg"></i>
+
+                Website URL
+
+            </h5>
+
+            <div class="url-box mt-3">
+
+                {{ url }}
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Risk Meter + Summary -->
+        <!-- ========================= -->
+
+        <div class="row g-4 mb-4">
+
+            <!-- Risk Meter -->
+
+            <div class="col-lg-5">
+
+                <div class="card-dark h-100 text-center">
+
+                    <h5>
+
+                        <i class="bi bi-speedometer2"></i>
+
+                        Risk Score
+
+                    </h5>
+
+                    <div class="risk-meter mt-4">
+
+                        <div
+                            class="risk-circle
+                            {% if color=='green' %}
+                            green
+                            {% elif color=='orange' %}
+                            orange
+                            {% else %}
+                            red
+                            {% endif %}"
+
+                            style="--percentage: {{ score }};"
+
+                        >
+
+                            <div class="risk-inner">
+
+                                <span class="risk-number">
+
+                                    {{ score }}%
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mt-4">
+
+                        {% if color=="green" %}
+
+                        <span class="badge bg-success px-4 py-2 fs-6">
+
+                            🟢 SAFE
+
+                        </span>
+
+                        {% elif color=="orange" %}
+
+                        <span class="badge bg-warning text-dark px-4 py-2 fs-6">
+
+                            🟡 SUSPICIOUS
+
+                        </span>
+
+                        {% else %}
+
+                        <span class="badge bg-danger px-4 py-2 fs-6">
+
+                            🔴 PHISHING
+
+                        </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Security Summary -->
+
+            <div class="col-lg-7">
+
+                <div class="card-dark h-100">
+
+                    <h5>
+
+                        <i class="bi bi-shield-lock-fill"></i>
+
+                        Security Summary
+
+                    </h5>
+
+                    <hr>
+
+                    <div class="row">
+
+                        <div class="col-6">
+
+                            <p>
+
+                                <strong>HTTPS</strong>
+
+                            </p>
+
+                            <p>
+
+                                <strong>SSL</strong>
+
+                            </p>
+
+                            <p>
+
+                                <strong>WHOIS</strong>
+
+                            </p>
+
+                            <p>
+
+                                <strong>DNS</strong>
+
+                            </p>
+
+                            <p>
+
+                                <strong>Threat Level</strong>
+
+                            </p>
+
+                        </div>
+
+                        <div class="col-6 text-end">
+
+                            <p>
+
+                                {% if security_summary.https=="Enabled" %}
+
+                                <span class="text-success">
+
+                                    ✅ Enabled
+
+                                </span>
+
+                                {% else %}
+
+                                <span class="text-danger">
+
+                                    ❌ Disabled
+
+                                </span>
+
+                                {% endif %}
+
+                            </p>
+
+                            <p>
+
+                                {% if security_summary.ssl=="Valid" %}
+
+                                <span class="text-success">
+
+                                    ✅ Valid
+
+                                </span>
+
+                                {% else %}
+
+                                <span class="text-danger">
+
+                                    {{ security_summary.ssl }}
+
+                                </span>
+
+                                {% endif %}
+
+                            </p>
+
+                            <p>
+
+                                {{ security_summary.whois }}
+
+                            </p>
+
+                            <p>
+
+                                {{ security_summary.dns }}
+
+                            </p>
+
+                            <p>
+
+                                {% if threat_level=="Low" %}
+
+                                <span class="text-success">
+
+                                    🟢 {{ threat_level }}
+
+                                </span>
+
+                                {% elif threat_level=="Medium" %}
+
+                                <span class="text-warning">
+
+                                    🟡 {{ threat_level }}
+
+                                </span>
+
+                                {% elif threat_level=="High" %}
+
+                                <span style="color:orange;">
+
+                                    🟠 {{ threat_level }}
+
+                                </span>
+
+                                {% else %}
+
+                                <span class="text-danger">
+
+                                    🔴 {{ threat_level }}
+
+                                </span>
+
+                                {% endif %}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="row text-center">
+
+                        <div class="col-md-6">
+
+                            <h6>
+
+                                Scan Time
+
+                            </h6>
+
+                            <p>
+
+                                {{ scan_time }}
+
+                            </p>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <h6>
+
+                                Analysis Time
+
+                            </h6>
+
+                            <p>
+
+                                {{ analysis_time }} sec
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+                <!-- ========================= -->
+        <!-- Threat Indicators & Recommendations -->
+        <!-- ========================= -->
+
+        <div class="row g-4 mb-4">
+
+            <div class="col-lg-6">
+
+                <div class="card-dark h-100">
+
+                    <h5>
+
+                        <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+
+                        Threat Indicators
+
+                    </h5>
+
+                    <hr>
+
+                    <ul class="analysis-list">
+
+                        {% for reason in reasons %}
+
+                        <li>
+
+                            <i class="bi bi-x-circle-fill text-danger me-2"></i>
+
+                            {{ reason }}
+
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="card-dark h-100">
+
+                    <h5>
+
+                        <i class="bi bi-lightbulb-fill text-warning"></i>
+
+                        Security Recommendations
+
+                    </h5>
+
+                    <hr>
+
+                    <ul class="analysis-list">
+
+                        {% for item in recommendations %}
+
+                        <li>
+
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+
+                            {{ item }}
+
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- WHOIS + SSL -->
+        <!-- ========================= -->
+
+        <div class="row g-4 mb-4">
+
+            <!-- WHOIS -->
+
+            <div class="col-lg-6">
+
+                <div class="card-dark h-100">
+
+                    <h4>
+
+                        <i class="bi bi-globe2"></i>
+
+                        WHOIS Information
+
+                    </h4>
+
+                    <hr>
+
+                    <table class="table table-borderless table-dark align-middle">
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>Domain</td>
+
+                                <td>{{ whois_data.domain }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Registrar</td>
+
+                                <td>{{ whois_data.registrar }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Country</td>
+
+                                <td>{{ whois_data.country }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Created</td>
+
+                                <td>{{ whois_data.creation_date }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Expires</td>
+
+                                <td>{{ whois_data.expiration_date }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Domain Age</td>
+
+                                <td>{{ whois_data.domain_age }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Status</td>
+
+                                <td>{{ whois_data.status }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Name Servers</td>
+
+                                <td>{{ whois_data.name_servers }}</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- SSL -->
+
+            <div class="col-lg-6">
+
+                <div class="card-dark h-100">
+
+                    <h4>
+
+                        <i class="bi bi-shield-lock-fill"></i>
+
+                        SSL Certificate
+
+                    </h4>
+
+                    <hr>
+
+                    <table class="table table-borderless table-dark align-middle">
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>Status</td>
+
+                                <td>
+
+                                    {% if ssl_data.status=="Valid" %}
+
+                                    <span class="text-success">
+
+                                        ✅ Valid
+
+                                    </span>
+
+                                    {% else %}
+
+                                    <span class="text-danger">
+
+                                        {{ ssl_data.status }}
+
+                                    </span>
+
+                                    {% endif %}
+
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Issued To</td>
+
+                                <td>{{ ssl_data.common_name }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Organization</td>
+
+                                <td>{{ ssl_data.organization }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Issuer</td>
+
+                                <td>{{ ssl_data.issuer }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Issuer Country</td>
+
+                                <td>{{ ssl_data.issuer_country }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>TLS Version</td>
+
+                                <td>{{ ssl_data.tls_version }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Certificate Version</td>
+
+                                <td>{{ ssl_data.certificate_version }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Valid From</td>
+
+                                <td>{{ ssl_data.valid_from }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Expires</td>
+
+                                <td>{{ ssl_data.valid_until }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Days Remaining</td>
+
+                                <td>{{ ssl_data.days_left }}</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Self Signed</td>
+
+                                <td>{{ ssl_data.self_signed }}</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Website Information -->
+        <!-- ========================= -->
+
+        <div class="card-dark mb-4">
+
+            <h4>
+
+                <i class="bi bi-globe-americas"></i>
+
+                Website Information
+
+            </h4>
+
+            <hr>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+
+                    <table class="table table-borderless table-dark">
+
+                        <tbody>
+
+                            <tr><td>Hostname</td><td>{{ dns_data.hostname }}</td></tr>
+
+                            <tr><td>Domain</td><td>{{ dns_data.domain }}</td></tr>
+
+                            <tr><td>Subdomain</td><td>{{ dns_data.subdomain }}</td></tr>
+
+                            <tr><td>TLD</td><td>{{ dns_data.tld }}</td></tr>
+
+                            <tr><td>Protocol</td><td>{{ dns_data.protocol }}</td></tr>
+
+                            <tr><td>Port</td><td>{{ dns_data.port }}</td></tr>
+
+                            <tr><td>IPv4</td><td>{{ dns_data.ip }}</td></tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <table class="table table-borderless table-dark">
+
+                        <tbody>
+
+                            <tr><td>IPv6</td><td>{{ dns_data.ipv6 }}</td></tr>
+
+                            <tr><td>IP Type</td><td>{{ dns_data.ip_type }}</td></tr>
+
+                            <tr><td>Reverse DNS</td><td>{{ dns_data.reverse_dns }}</td></tr>
+
+                            <tr><td>Path</td><td>{{ dns_data.path }}</td></tr>
+
+                            <tr><td>Query Parameters</td><td>{{ dns_data.query_count }}</td></tr>
+
+                            <tr><td>Fragment</td><td>{{ dns_data.fragment }}</td></tr>
+
+                            <tr><td>URL Length</td><td>{{ dns_data.url_length }}</td></tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+                <!-- ========================= -->
+        <!-- Detection Engine -->
+        <!-- ========================= -->
+
+        <div class="card-dark mb-4">
+
+            <h4>
+
+                <i class="bi bi-cpu-fill"></i>
+
+                Detection Engine
+
+            </h4>
+
+            <hr>
+
+            <div class="row">
+
+                {% for item in detection_engine %}
+
+                <div class="col-md-6 col-lg-3 mb-3">
+
+                    <div class="engine-box">
+
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+
+                        {{ item }}
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Analysis Information -->
+        <!-- ========================= -->
+
+        <div class="row g-4 mb-4">
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <i class="bi bi-clock-history display-6 text-info"></i>
+
+                    <h6 class="mt-3">
+
+                        Scan Time
+
+                    </h6>
+
+                    <p>
+
+                        {{ scan_time }}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <i class="bi bi-stopwatch display-6 text-warning"></i>
+
+                    <h6 class="mt-3">
+
+                        Analysis Time
+
+                    </h6>
+
+                    <p>
+
+                        {{ analysis_time }} sec
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <i class="bi bi-activity display-6 text-success"></i>
+
+                    <h6 class="mt-3">
+
+                        Threat Level
+
+                    </h6>
+
+                    <p>
+
+                        {% if threat_level=="Low" %}
+
+                        <span class="badge bg-success">
+
+                            🟢 LOW
+
+                        </span>
+
+                        {% elif threat_level=="Medium" %}
+
+                        <span class="badge bg-warning text-dark">
+
+                            🟡 MEDIUM
+
+                        </span>
+
+                        {% elif threat_level=="High" %}
+
+                        <span class="badge bg-warning">
+
+                            🟠 HIGH
+
+                        </span>
+
+                        {% else %}
+
+                        <span class="badge bg-danger">
+
+                            🔴 CRITICAL
+
+                        </span>
+
+                        {% endif %}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Action Buttons -->
+        <!-- ========================= -->
+
+        <div class="text-center mt-5">
+
+            <a href="/"
+
+               class="btn btn-success btn-lg px-4 me-3">
+
+                <i class="bi bi-search"></i>
+
+                New Scan
+
+            </a>
+
+            <a href="/history"
+
+               class="btn btn-outline-light btn-lg px-4 me-3">
+
+                <i class="bi bi-clock-history"></i>
+
+                Scan History
+
+            </a>
+
+            <a
+    href="/download-report"
+    class="btn btn-primary btn-lg px-4"
+>
+    <i class="bi bi-file-earmark-pdf-fill"></i>
+    Download PDF Report
+</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const circles = document.querySelectorAll(".risk-circle");
+
+    circles.forEach(circle => {
+
+        const value = parseInt(circle.style.getPropertyValue("--percentage"));
+
+        circle.style.background =
+
+        `conic-gradient(
+
+            #00ff9d ${value * 3.6}deg,
+
+            #2a3446 ${value * 3.6}deg
+
+        )`;
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,2568 @@
+:root{
+
+    --primary:#00ff9d;
+    --primary-dark:#00d17f;
+
+    --danger:#ff4d4d;
+    --warning:#ffc107;
+    --success:#28c76f;
+
+    --dark:#0b1220;
+    --card:#161b22;
+    --card2:#1d2636;
+
+    --border:#2d3748;
+
+    --text:#f5f5f5;
+    --muted:#9ca3af;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:
+    radial-gradient(circle at top,#1c2740 0%,#0b1220 45%,#05070d 100%);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+}
+
+/* ===========================
+        NAVBAR
+=========================== */
+
+.navbar{
+
+    background:#111827;
+
+    border-bottom:1px solid #222;
+
+    padding:15px 0;
+
+}
+
+.navbar-brand{
+
+    font-size:28px;
+
+    color:var(--primary)!important;
+
+}
+
+.navbar .btn{
+
+    border-radius:8px;
+
+}
+
+/* ===========================
+        HERO
+=========================== */
+
+.hero{
+
+    text-align:center;
+
+    margin-top:60px;
+
+    margin-bottom:50px;
+
+}
+
+.hero h1{
+
+    font-size:60px;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+}
+
+.hero p{
+
+    color:var(--muted);
+
+    margin-top:12px;
+
+    font-size:18px;
+
+}
+
+/* ===========================
+      GLASS CARD
+=========================== */
+
+.glass-card{
+
+    max-width:1280px;
+
+    width:100%;
+
+    margin:auto;
+
+    padding:45px;
+
+    border-radius:24px;
+
+    background:rgba(18,24,38,.88);
+
+    backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+
+    0 25px 60px rgba(0,0,0,.45),
+
+    0 0 40px rgba(0,255,157,.08);
+
+}
+
+/* ===========================
+      INNER CARDS
+=========================== */
+
+.card-dark{
+
+    background:linear-gradient(
+
+        145deg,
+
+        #171f2d,
+
+        #101720
+
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    transition:.35s;
+
+    overflow:hidden;
+
+}
+
+.card-dark:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+
+    0 20px 45px rgba(0,0,0,.45),
+
+    0 0 20px rgba(0,255,157,.12);
+
+}
+
+/* ===========================
+      INPUT
+=========================== */
+
+.form-control{
+
+    background:#1b2434!important;
+
+    border:1px solid #2c3648;
+
+    color:white!important;
+
+    border-radius:12px;
+
+    padding:15px;
+
+}
+
+.form-control::placeholder{
+
+    color:#888;
+
+}
+
+.form-control:focus{
+
+    background:#1b2434!important;
+
+    border-color:var(--primary);
+
+    color:white;
+
+    box-shadow:0 0 15px rgba(0,255,157,.35);
+
+}
+
+/* ===========================
+        BUTTONS
+=========================== */
+
+.btn{
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    padding:12px 28px;
+
+    transition:.35s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.btn-success{
+
+    background:var(--primary);
+
+    border:none;
+
+    color:black;
+
+}
+
+.btn-success:hover{
+
+    background:var(--primary-dark);
+
+    color:black;
+
+}
+
+.btn-primary{
+
+    background:#3b82f6;
+
+    border:none;
+
+}
+
+.btn-outline-light:hover{
+
+    color:black;
+
+}
+
+/* ===========================
+        URL BOX
+=========================== */
+
+.url-box{
+
+    background:#101722;
+
+    border-radius:16px;
+
+    padding:22px;
+
+    font-size:18px;
+
+    word-break:break-word;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+/* ===========================
+      HEADINGS
+=========================== */
+
+h1,h2,h3,h4,h5{
+
+    color:white;
+
+}
+
+.text-secondary{
+
+    color:#b5b5b5!important;
+
+}
+
+hr{
+
+    border-color:#323232;
+
+}
+
+/* ===========================
+      PROGRESS BAR
+=========================== */
+
+.progress{
+
+    background:#242b3a;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    height:30px;
+
+}
+
+.progress-bar{
+
+    font-size:16px;
+
+    font-weight:700;
+
+    transition:width 1.2s ease;
+
+}
+
+/* ===========================
+      BADGES
+=========================== */
+
+.badge{
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+      ICONS
+=========================== */
+
+.bi{
+
+    margin-right:5px;
+
+}
+
+/* =====================================================
+   PHISHGUARD - CYBERSECURITY DASHBOARD
+   Part 2
+===================================================== */
+
+
+/* ===========================
+      RESULT PAGE
+=========================== */
+
+.analysis-list{
+
+    list-style:none;
+
+    padding-left:0;
+
+    margin-top:20px;
+
+}
+
+.analysis-list li{
+
+    background:#192232;
+
+    border-left:5px solid #00ff9d;
+
+    padding:16px 20px;
+
+    border-radius:12px;
+
+    margin-bottom:14px;
+
+    transition:.35s;
+
+}
+
+.analysis-list li:hover{
+
+    transform:translateX(10px);
+
+}
+
+.analysis-list li:hover{
+
+    transform:translateX(8px);
+
+    background:#1c2535;
+
+}
+
+
+/* ===========================
+      STATUS COLORS
+=========================== */
+
+.safe{
+
+    color:var(--success);
+
+}
+
+.warning{
+
+    color:var(--warning);
+
+}
+
+.danger{
+
+    color:var(--danger);
+
+}
+
+
+/* ===========================
+      SCORE CARD
+=========================== */
+
+.score-card{
+
+    text-align:center;
+
+    padding:35px;
+
+}
+
+.score-card h2{
+
+    font-size:48px;
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+
+}
+
+.score-card p{
+
+    color:#bbbbbb;
+
+}
+
+
+/* ===========================
+      RESULT BOX
+=========================== */
+
+.result-box{
+
+    background:#121927;
+
+    border:1px solid #2d3748;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    margin-top:20px;
+
+}
+
+
+/* ===========================
+      DASHBOARD STATS
+=========================== */
+
+.stat-card{
+
+    background:linear-gradient(145deg,#182132,#121826);
+
+    border-radius:18px;
+
+    padding:30px;
+
+    text-align:center;
+
+    border:1px solid #283548;
+
+    transition:.35s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.35);
+
+}
+
+.stat-card h2{
+
+    font-size:42px;
+
+    color:var(--primary);
+
+    margin-bottom:8px;
+
+}
+
+.stat-card p{
+
+    color:#bbbbbb;
+
+}
+
+
+/* ===========================
+      TABLES
+=========================== */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+
+}
+
+table th{
+
+    background:var(--primary);
+
+    color:black;
+
+    padding:16px;
+
+    font-weight:700;
+
+}
+
+table td{
+
+    padding:14px;
+
+    border-bottom:1px solid #273142;
+
+    color:#f0f0f0;
+
+}
+
+table td:first-child{
+
+    color:#00ff9d;
+
+    font-weight:600;
+
+    width:42%;
+
+}
+
+table tr{
+
+    transition:.25s;
+
+}
+
+table tr:hover{
+
+    background:#1a2332;
+
+}
+
+
+/* ===========================
+      LINKS
+=========================== */
+
+a{
+
+    text-decoration:none;
+
+}
+
+a:hover{
+
+    text-decoration:none;
+
+}
+
+
+/* ===========================
+      BUTTON GROUP
+=========================== */
+
+.button-group{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-top:40px;
+
+}
+
+
+/* ===========================
+      ALERT BOXES
+=========================== */
+
+.alert-safe{
+
+    background:rgba(40,199,111,.12);
+
+    border-left:5px solid var(--success);
+
+    padding:18px;
+
+    border-radius:10px;
+
+    color:#c7ffd9;
+
+}
+
+.alert-warning{
+
+    background:rgba(255,193,7,.12);
+
+    border-left:5px solid var(--warning);
+
+    padding:18px;
+
+    border-radius:10px;
+
+    color:#fff2be;
+
+}
+
+.alert-danger{
+
+    background:rgba(255,77,77,.12);
+
+    border-left:5px solid var(--danger);
+
+    padding:18px;
+
+    border-radius:10px;
+
+    color:#ffd1d1;
+
+}
+
+
+/* ===========================
+      ANIMATIONS
+=========================== */
+
+.fade-in{
+
+    animation:fadeIn .7s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+.slide-left{
+
+    animation:slideLeft .7s ease;
+
+}
+
+@keyframes slideLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+.slide-right{
+
+    animation:slideRight .7s ease;
+
+}
+
+@keyframes slideRight{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+/* ===========================
+      GLOW EFFECT
+=========================== */
+
+.glow{
+
+    box-shadow:0 0 20px rgba(0,255,157,.25);
+
+}
+
+
+/* ===========================
+      CARD HOVER
+=========================== */
+
+.glass-card:hover{
+
+    box-shadow:
+
+    0 25px 50px rgba(0,0,0,.45),
+
+    0 0 30px rgba(0,255,157,.12);
+
+}
+
+
+/* ===========================
+      CUSTOM SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0d1117;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2d3748;
+
+    border-radius:10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary);
+
+}
+
+/* =====================================================
+   PHISHGUARD - CYBERSECURITY DASHBOARD
+   Part 3
+=====================================================*/
+
+
+/* ===========================
+      RISK METER
+=========================== */
+
+.risk-circle{
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:auto;
+
+    position:relative;
+
+    background:conic-gradient(
+
+        #00ff9d 0deg,
+
+        #2b3445 0deg
+
+    );
+
+    animation:growCircle 2s ease;
+
+}
+
+.risk-inner{
+
+    width:175px;
+
+    height:175px;
+
+    background:#111827;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:
+
+    inset 0 0 20px rgba(0,0,0,.4);
+
+}
+
+.risk-number{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:white;
+
+}
+
+
+/* ===========================
+      DASHBOARD CARDS
+=========================== */
+
+.dashboard-card{
+
+    background:#161b22;
+
+    border:1px solid #2d3748;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    transition:.35s;
+
+    height:100%;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.35);
+
+}
+
+
+/* ===========================
+      WHOIS CARD
+=========================== */
+
+.whois-card{
+
+    background:#101827;
+
+    border-left:5px solid #0dcaf0;
+
+    padding:22px;
+
+    border-radius:12px;
+
+    margin-top:20px;
+
+}
+
+.whois-card h5{
+
+    color:#0dcaf0;
+
+}
+
+.whois-card p{
+
+    margin:8px 0;
+
+    color:#dddddd;
+
+}
+
+
+/* ===========================
+      SSL CARD
+=========================== */
+
+.ssl-card{
+
+    background:#101827;
+
+    border-left:5px solid #28c76f;
+
+    padding:22px;
+
+    border-radius:12px;
+
+    margin-top:20px;
+
+}
+
+.ssl-card h5{
+
+    color:#28c76f;
+
+}
+
+.ssl-card p{
+
+    margin:8px 0;
+
+}
+
+
+/* ===========================
+      PDF BUTTON
+=========================== */
+
+.btn-download{
+
+    background:#6f42c1;
+
+    color:white;
+
+    border:none;
+
+}
+
+.btn-download:hover{
+
+    background:#5b35a6;
+
+    color:white;
+
+}
+
+
+/* ===========================
+      HISTORY TABLE
+=========================== */
+
+.history-table{
+
+    overflow-x:auto;
+
+    border-radius:15px;
+
+}
+
+.history-table table{
+
+    min-width:800px;
+
+}
+
+
+/* ===========================
+      SEARCH BOX
+=========================== */
+
+.search-box{
+
+    position:relative;
+
+    margin-bottom:25px;
+
+}
+
+.search-box input{
+
+    padding-left:45px;
+
+}
+
+.search-box i{
+
+    position:absolute;
+
+    top:14px;
+
+    left:15px;
+
+    color:#999;
+
+}
+
+
+/* ===========================
+      LOADING SPINNER
+=========================== */
+
+.loader{
+
+    width:70px;
+
+    height:70px;
+
+    border:8px solid rgba(255,255,255,.1);
+
+    border-top:8px solid var(--primary);
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+    margin:auto;
+
+}
+
+@keyframes spin{
+
+    100%{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+
+/* ===========================
+      LOADING SCREEN
+=========================== */
+
+.loading-screen{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:#05070d;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+    display:none;
+
+}
+
+.loading-screen h3{
+
+    margin-top:25px;
+
+    color:white;
+
+}
+
+
+/* ===========================
+      FOOTER
+=========================== */
+
+footer{
+
+    margin-top:80px;
+
+    padding:30px;
+
+    text-align:center;
+
+    color:#888;
+
+    border-top:1px solid #222;
+
+}
+
+footer a{
+
+    color:var(--primary);
+
+}
+
+
+/* ===========================
+      RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+.hero h1{
+
+font-size:48px;
+
+}
+
+.glass-card{
+
+padding:30px;
+
+}
+
+}
+
+
+@media(max-width:768px){
+
+.hero{
+
+margin-top:30px;
+
+}
+
+.hero h1{
+
+font-size:36px;
+
+}
+
+.hero p{
+
+font-size:15px;
+
+}
+
+.glass-card{
+
+padding:22px;
+
+}
+
+.button-group{
+
+flex-direction:column;
+
+}
+
+.btn{
+
+width:100%;
+
+}
+
+table{
+
+font-size:14px;
+
+}
+
+}
+
+
+@media(max-width:576px){
+
+.hero h1{
+
+font-size:30px;
+
+}
+
+.risk-circle{
+
+width:140px;
+
+height:140px;
+
+font-size:28px;
+
+}
+
+.glass-card{
+
+padding:18px;
+
+}
+
+}
+
+
+/* ===========================
+      SMALL ANIMATIONS
+=========================== */
+
+.float{
+
+animation:floating 4s ease-in-out infinite;
+
+}
+
+@keyframes floating{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+
+.pulse{
+
+animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+box-shadow:0 0 0 rgba(0,255,157,.2);
+
+}
+
+50%{
+
+box-shadow:0 0 25px rgba(0,255,157,.35);
+
+}
+
+100%{
+
+box-shadow:0 0 0 rgba(0,255,157,.2);
+
+}
+
+}
+
+
+/* ===========================
+      TEXT COLORS
+=========================== */
+
+.text-safe{
+
+color:#28c76f;
+
+}
+
+.text-warning-custom{
+
+color:#ffc107;
+
+}
+
+.text-danger-custom{
+
+color:#ff4d4d;
+
+}
+
+
+/* ===========================
+      UTILITIES
+=========================== */
+
+.rounded-xl{
+
+border-radius:20px;
+
+}
+
+.shadow-lg-custom{
+
+box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+}
+
+.mt-40{
+
+margin-top:40px;
+
+}
+
+.mb-40{
+
+margin-bottom:40px;
+
+}
+
+.whois-card{
+
+background:#111827;
+
+border-left:5px solid #0dcaf0;
+
+padding:25px;
+
+border-radius:12px;
+
+}
+
+.whois-card p{
+
+margin:8px 0;
+
+}
+
+.ssl-card{
+
+background:#111827;
+
+border-left:5px solid #28c76f;
+
+padding:25px;
+
+border-radius:12px;
+
+margin-top:25px;
+
+}
+
+.ssl-card p{
+
+margin:8px 0;
+
+}
+
+.info-grid p{
+
+    margin:10px 0;
+
+}
+
+.card-dark strong{
+
+display:inline-block;
+
+width:170px;
+
+color:#1ef0d2;
+
+}
+
+/* Website Information */
+
+.website-card{
+
+    margin-top:30px;
+
+}
+
+.website-card strong{
+
+    color:#00ffb7;
+
+}
+
+.website-card p{
+
+    margin:12px 0;
+
+}
+
+@keyframes growCircle{
+
+from{
+
+transform:scale(.6);
+
+opacity:0;
+
+}
+
+to{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+.engine-box{
+
+    background:#141d2b;
+
+    border:1px solid #273142;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    text-align:center;
+
+    transition:.3s;
+
+    height:100%;
+
+    font-weight:600;
+
+}
+
+.engine-box:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#00ff9d;
+
+    box-shadow:
+
+    0 0 18px rgba(0,255,157,.15);
+
+}
+
+.info-card{
+
+    background:#151d2b;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    text-align:center;
+
+    border:1px solid #2c3749;
+
+    transition:.35s;
+
+    height:100%;
+
+}
+
+.info-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.card-dark h4{
+
+    font-size:28px;
+
+    margin-bottom:15px;
+
+}
+
+.card-dark h5{
+
+    font-size:22px;
+
+    margin-bottom:12px;
+
+}
+
+/* ===========================
+      CARD TITLES
+=========================== */
+
+.card-dark h4{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+}
+
+.card-dark h5{
+
+    font-size:22px;
+
+    font-weight:600;
+
+    letter-spacing:.3px;
+
+}
+
+/* ===========================
+      CARD PARAGRAPHS
+=========================== */
+
+.card-dark p{
+
+    line-height:1.8;
+
+    color:#d8d8d8;
+
+}
+
+/* ===========================
+      TABLE IMPROVEMENTS
+=========================== */
+
+.table{
+
+    margin-bottom:0;
+
+}
+
+.table td{
+
+    background:transparent!important;
+
+    vertical-align:middle;
+
+    border-color:#283446;
+
+    padding:15px;
+
+}
+
+.table td:first-child{
+
+    color:#00ff9d;
+
+    font-weight:600;
+
+    width:42%;
+
+}
+
+.table tr{
+
+    transition:.25s;
+
+}
+
+.table tr:hover{
+
+    background:#1d2635;
+
+}
+
+/* ===========================
+      SECURITY SUMMARY
+=========================== */
+
+.security-summary{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.summary-item{
+
+    background:#131c2a;
+
+    border:1px solid #2d3748;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.summary-item:hover{
+
+    border-color:#00ff9d;
+
+    transform:translateY(-5px);
+
+}
+
+/* ===========================
+      THREAT LEVEL
+=========================== */
+
+.threat-low{
+
+    color:#28c76f;
+
+}
+
+.threat-medium{
+
+    color:#ffc107;
+
+}
+
+.threat-high{
+
+    color:#ff9800;
+
+}
+
+.threat-critical{
+
+    color:#ff4d4d;
+
+}
+
+/* ===========================
+      ICON BOX
+=========================== */
+
+.icon-box{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:15px;
+
+    background:#192232;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:auto;
+
+    margin-bottom:15px;
+
+    font-size:24px;
+
+}
+
+/* ===========================
+      ENGINE BOX
+=========================== */
+
+.engine-box{
+
+    background:#141d2b;
+
+    border:1px solid #293345;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    transition:.35s;
+
+    text-align:center;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    min-height:90px;
+
+}
+
+.engine-box:hover{
+
+    transform:translateY(-7px);
+
+    border-color:#00ff9d;
+
+    box-shadow:
+
+    0 0 20px rgba(0,255,157,.15);
+
+}
+
+/* ===========================
+      INFO CARD
+=========================== */
+
+.info-card{
+
+    background:#151d2b;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    border:1px solid #2d3748;
+
+    transition:.35s;
+
+    height:100%;
+
+}
+
+.info-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+
+    0 15px 30px rgba(0,0,0,.35);
+
+}
+
+/* ===========================
+      URL BOX
+=========================== */
+
+.url-box{
+
+    font-size:18px;
+
+    font-weight:500;
+
+    line-height:1.7;
+
+}
+
+/* ===========================
+      BUTTONS
+=========================== */
+
+.btn{
+
+    transition:.35s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.btn-success{
+
+    box-shadow:
+
+    0 0 15px rgba(0,255,157,.2);
+
+}
+
+.btn-primary{
+
+    box-shadow:
+
+    0 0 15px rgba(59,130,246,.2);
+
+}
+
+/* ===========================
+      BADGES
+=========================== */
+
+.badge{
+
+    letter-spacing:.6px;
+
+}
+
+/* ===========================
+      SECTION ANIMATION
+=========================== */
+
+.card-dark{
+
+    animation:cardFade .6s ease;
+
+}
+
+@keyframes cardFade{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ===========================
+      RISK METER GLOW
+=========================== */
+
+.risk-circle.green{
+
+box-shadow:
+
+0 0 35px rgba(40,199,111,.30);
+
+}
+
+.risk-circle.orange{
+
+box-shadow:
+
+0 0 35px rgba(255,193,7,.30);
+
+}
+
+.risk-circle.red{
+
+box-shadow:
+
+0 0 35px rgba(255,77,77,.30);
+
+}
+
+/* ===========================
+      RESPONSIVE TABLES
+=========================== */
+
+@media(max-width:992px){
+
+.table{
+
+font-size:15px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.security-summary{
+
+grid-template-columns:1fr;
+
+}
+
+.engine-box{
+
+margin-bottom:15px;
+
+}
+
+.info-card{
+
+margin-bottom:20px;
+
+}
+
+.risk-circle{
+
+width:180px;
+
+height:180px;
+
+}
+
+.risk-inner{
+
+width:140px;
+
+height:140px;
+
+}
+
+.risk-number{
+
+font-size:34px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.table td{
+
+display:block;
+
+width:100%!important;
+
+}
+
+.table tr{
+
+display:block;
+
+margin-bottom:15px;
+
+}
+
+.card-dark{
+
+padding:20px;
+
+}
+
+}
+
+/* ===========================
+      DASHBOARD STATS
+=========================== */
+
+.stats-card{
+
+    background:linear-gradient(145deg,#182233,#111827);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    text-align:center;
+
+    transition:.35s;
+
+    height:100%;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.stats-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.06),
+
+        transparent
+
+    );
+
+    transition:.7s;
+
+}
+
+.stats-card:hover::before{
+
+    left:100%;
+
+}
+
+.stats-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#00ff9d;
+
+}
+
+.stats-card h2{
+
+    font-size:46px;
+
+    color:#00ff9d;
+
+    margin-bottom:10px;
+
+}
+
+.stats-card p{
+
+    color:#cfcfcf;
+
+    margin-bottom:0;
+
+}
+
+/* ===========================
+      SEARCH BAR
+=========================== */
+
+.search-box{
+
+    position:relative;
+
+    margin-bottom:30px;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    padding:15px 20px 15px 50px;
+
+    border-radius:14px;
+
+    border:1px solid #2d3748;
+
+    background:#111827;
+
+    color:white;
+
+    transition:.3s;
+
+}
+
+.search-box input:focus{
+
+    border-color:#00ff9d;
+
+    outline:none;
+
+    box-shadow:0 0 20px rgba(0,255,157,.18);
+
+}
+
+.search-box i{
+
+    position:absolute;
+
+    top:17px;
+
+    left:18px;
+
+    color:#888;
+
+}
+
+/* ===========================
+      HISTORY TABLE
+=========================== */
+
+.history-table{
+
+    background:#141d2b;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.history-table table{
+
+    margin:0;
+
+}
+
+.history-table thead{
+
+    background:#00ff9d;
+
+}
+
+.history-table th{
+
+    color:black;
+
+    font-weight:700;
+
+    padding:18px;
+
+}
+
+.history-table td{
+
+    padding:18px;
+
+}
+
+.history-table tbody tr{
+
+    transition:.25s;
+
+}
+
+.history-table tbody tr:hover{
+
+    background:#1d2636;
+
+}
+
+/* ===========================
+      PDF BUTTON
+=========================== */
+
+.btn-download{
+
+    background:#6f42c1;
+
+    border:none;
+
+    color:white;
+
+    transition:.35s;
+
+}
+
+.btn-download:hover{
+
+    background:#5a34a8;
+
+    transform:translateY(-3px);
+
+}
+
+/* ===========================
+      LOADING OVERLAY
+=========================== */
+
+.loading-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    background:rgba(5,7,13,.96);
+
+    z-index:99999;
+
+}
+
+.loading-screen.active{
+
+    display:flex;
+
+}
+
+.loader{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    border:8px solid rgba(255,255,255,.08);
+
+    border-top:8px solid #00ff9d;
+
+    animation:spin 1s linear infinite;
+
+}
+
+.loading-screen h3{
+
+    margin-top:30px;
+
+    letter-spacing:1px;
+
+    color:white;
+
+}
+
+/* ===========================
+      FLOATING GLOW
+=========================== */
+
+.glow-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.glow-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-100%;
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(0,255,157,.15),
+
+        transparent 70%
+
+    );
+
+    animation:rotateGlow 10s linear infinite;
+
+}
+
+@keyframes rotateGlow{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ===========================
+      STATUS BADGES
+=========================== */
+
+.badge-safe{
+
+    background:#28c76f;
+
+    color:white;
+
+}
+
+.badge-warning{
+
+    background:#ffc107;
+
+    color:black;
+
+}
+
+.badge-danger{
+
+    background:#ff4d4d;
+
+    color:white;
+
+}
+
+/* ===========================
+      CHART CONTAINER
+=========================== */
+
+.chart-card{
+
+    background:#151d2b;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:25px;
+
+    margin-top:30px;
+
+}
+
+.chart-card canvas{
+
+    max-height:350px;
+
+}
+
+/* ===========================
+      FOOTER
+=========================== */
+
+footer{
+
+    margin-top:80px;
+
+    padding:35px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+
+    color:#9ca3af;
+
+}
+
+footer a{
+
+    color:#00ff9d;
+
+}
+
+footer a:hover{
+
+    color:white;
+
+}
+
+/* ===========================
+      SMALL HOVER EFFECTS
+=========================== */
+
+.table tr,
+.card-dark,
+.engine-box,
+.info-card,
+.stats-card{
+
+    transition:.35s;
+
+}
+
+.card-dark:hover,
+.info-card:hover,
+.engine-box:hover,
+.stats-card:hover{
+
+    cursor:default;
+
+}
+
+/* ===========================
+      PAGE ANIMATION
+=========================== */
+
+.glass-card{
+
+    animation:pageLoad .7s ease;
+
+}
+
+@keyframes pageLoad{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================
+      RESPONSIVE IMPROVEMENTS
+=========================== */
+
+@media(max-width:992px){
+
+.stats-card{
+
+margin-bottom:20px;
+
+}
+
+.chart-card{
+
+margin-top:20px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.glass-card{
+
+padding:22px;
+
+}
+
+.stats-card h2{
+
+font-size:36px;
+
+}
+
+.loader{
+
+width:70px;
+
+height:70px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.card-dark{
+
+padding:18px;
+
+}
+
+.url-box{
+
+font-size:15px;
+
+}
+
+.engine-box{
+
+font-size:14px;
+
+}
+
+.stats-card h2{
+
+font-size:30px;
+
+}
+
+}
+
+/* ===================================
+        LOADING SCREEN
+=================================== */
+
+.loading-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(5,7,13,.97);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    z-index:99999;
+
+}
+
+.loading-screen.active{
+
+    display:flex;
+
+}
+
+.loader{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    border:8px solid rgba(255,255,255,.1);
+
+    border-top:8px solid #00ff9d;
+
+    animation:spin .8s linear infinite;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+.loading-screen h3{
+
+    color:white;
+
+    margin-top:25px;
+
+    font-size:32px;
+
+}
+
+.loading-screen p{
+
+    color:#00ff9d;
+
+    margin-top:18px;
+
+    font-size:18px;
+
+}

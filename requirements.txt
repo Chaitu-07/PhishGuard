@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+validators
+tldextract
+python-whois
+cryptography
+reportlab

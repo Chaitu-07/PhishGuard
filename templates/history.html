@@ -1,0 +1,450 @@
+{% extends "base.html" %}
+
+{% block title %}
+Scan History
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="glass-card">
+
+        <!-- ========================= -->
+        <!-- Header -->
+        <!-- ========================= -->
+
+        <div class="text-center mb-5">
+
+            <i class="bi bi-clock-history display-3 text-info"></i>
+
+            <h1 class="mt-3">
+
+                Scan History Dashboard
+
+            </h1>
+
+            <p class="text-secondary">
+
+                View all previously scanned websites and their security status.
+
+            </p>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- Dashboard Statistics -->
+        <!-- ========================= -->
+
+        <div class="row g-4 mb-5">
+
+            <!-- Total -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="stats-card">
+
+                    <i class="bi bi-database-fill display-5 text-primary"></i>
+
+                    <h2>
+
+                        {{ scans|length }}
+
+                    </h2>
+
+                    <p>
+
+                        Total Scans
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Safe -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="stats-card">
+
+                    <i class="bi bi-shield-check display-5 text-success"></i>
+
+                    <h2>
+
+                        {{ scans | selectattr('verdict','equalto','Safe') | list | length }}
+
+                    </h2>
+
+                    <p>
+
+                        Safe
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Suspicious -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="stats-card">
+
+                    <i class="bi bi-exclamation-circle display-5 text-warning"></i>
+
+                    <h2>
+
+                        {{ scans | selectattr('verdict','equalto','Suspicious') | list | length }}
+
+                    </h2>
+
+                    <p>
+
+                        Suspicious
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Phishing -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="stats-card">
+
+                    <i class="bi bi-bug-fill display-5 text-danger"></i>
+
+                    <h2>
+
+                        {{ scans | selectattr('verdict','equalto','Phishing') | list | length }}
+
+                    </h2>
+
+                    <p>
+
+                        Phishing
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Search + Actions -->
+        <!-- ========================= -->
+
+        <div class="row mb-4">
+
+            <div class="col-lg-8">
+
+                <div class="search-box">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+
+                        type="text"
+
+                        id="searchInput"
+
+                        placeholder="Search scanned URLs..."
+
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 text-lg-end text-center">
+
+                <a
+
+                    href="/clear-history"
+
+                    class="btn btn-danger"
+
+                    onclick="return confirm('Delete all scan history?')"
+
+                >
+
+                    <i class="bi bi-trash-fill"></i>
+
+                    Clear History
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- History Table -->
+        <!-- ========================= -->
+
+        <div class="history-table">
+
+            <table class="table table-dark table-hover align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+
+                        <th>Website</th>
+
+                        <th>Risk Score</th>
+
+                        <th>Verdict</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="historyTable">
+
+{% for scan in scans %}
+
+<tr>
+
+    <!-- Date -->
+
+    <td>
+
+        <div>
+
+            <strong>
+
+                {{ scan.scan_time.strftime('%d %b %Y') if scan.scan_time else '-' }}
+
+            </strong>
+
+            <br>
+
+            <small class="text-secondary">
+
+                {{ scan.scan_time.strftime('%I:%M %p') if scan.scan_time else '' }}
+
+            </small>
+
+        </div>
+
+    </td>
+
+
+    <!-- URL -->
+
+    <td>
+
+        <div class="url-history">
+
+            <i class="bi bi-globe2 text-info me-2"></i>
+
+            {{ scan.url }}
+
+        </div>
+
+    </td>
+
+
+    <!-- Score -->
+
+    <td>
+
+        {% if scan.score <= 20 %}
+
+        <span class="badge bg-success">
+
+            {{ scan.score }}%
+
+        </span>
+
+        {% elif scan.score <= 50 %}
+
+        <span class="badge bg-warning text-dark">
+
+            {{ scan.score }}%
+
+        </span>
+
+        {% else %}
+
+        <span class="badge bg-danger">
+
+            {{ scan.score }}%
+
+        </span>
+
+        {% endif %}
+
+    </td>
+
+
+    <!-- Verdict -->
+
+    <td>
+
+        {% if scan.verdict=="Safe" %}
+
+        <span class="badge badge-safe">
+
+            <i class="bi bi-check-circle-fill"></i>
+
+            SAFE
+
+        </span>
+
+        {% elif scan.verdict=="Suspicious" %}
+
+        <span class="badge badge-warning">
+
+            <i class="bi bi-exclamation-circle-fill"></i>
+
+            SUSPICIOUS
+
+        </span>
+
+        {% else %}
+
+        <span class="badge badge-danger">
+
+            <i class="bi bi-x-octagon-fill"></i>
+
+            PHISHING
+
+        </span>
+
+        {% endif %}
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+{% if scans|length == 0 %}
+
+<tr>
+
+    <td colspan="4" class="text-center py-5">
+
+        <i class="bi bi-database-x display-5 text-secondary"></i>
+
+        <h4 class="mt-3">
+
+            No Scan History Found
+
+        </h4>
+
+        <p class="text-secondary">
+
+            Scan a website to see it appear here.
+
+        </p>
+
+    </td>
+
+</tr>
+
+{% endif %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- Footer Actions -->
+        <!-- ========================= -->
+
+        <div class="row mt-5">
+
+            <div class="col-lg-6 text-center text-lg-start">
+
+                <a href="/"
+
+                   class="btn btn-success btn-lg px-4">
+
+                    <i class="bi bi-house-fill"></i>
+
+                    Home
+
+                </a>
+
+            </div>
+
+            <div class="col-lg-6 text-center text-lg-end mt-3 mt-lg-0">
+
+                <button
+
+                    class="btn btn-primary btn-lg px-4"
+
+                    onclick="location.reload();"
+
+                >
+
+                    <i class="bi bi-arrow-clockwise"></i>
+
+                    Refresh
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput = document.getElementById("searchInput");
+
+    const tableBody = document.getElementById("historyTable");
+
+    if (!searchInput || !tableBody) return;
+
+    searchInput.addEventListener("keyup", function () {
+
+        const filter = this.value.toLowerCase();
+
+        const rows = tableBody.getElementsByTagName("tr");
+
+        for (let i = 0; i < rows.length; i++) {
+
+            const text = rows[i].innerText.toLowerCase();
+
+            if (text.indexOf(filter) > -1) {
+
+                rows[i].style.display = "";
+
+            }
+
+            else {
+
+                rows[i].style.display = "none";
+
+            }
+
+        }
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

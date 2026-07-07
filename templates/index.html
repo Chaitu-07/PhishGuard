@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Home
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<div class="hero">
+
+<h1>
+
+<i class="bi bi-shield-lock-fill"></i>
+
+PhishGuard
+
+</h1>
+
+<p>
+
+Detect phishing websites using intelligent rule-based analysis.
+
+</p>
+
+</div>
+
+
+<div class="glass-card">
+
+<form
+    id="scanForm"
+    action="/analyze"
+    method="POST"
+>
+
+<label class="form-label">
+
+Website URL
+
+</label>
+
+<input
+
+class="form-control form-control-lg"
+
+type="text"
+
+name="url"
+
+placeholder="https://example.com"
+
+required>
+
+
+<button
+
+class="btn btn-success btn-lg mt-4 w-100">
+
+<i class="bi bi-search"></i>
+
+Analyze Website
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}
