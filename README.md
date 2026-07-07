@@ -168,16 +168,6 @@ Generate PDF Report
 
 ---
 
-# 📊 Risk Score Classification
-
-| Score | Verdict |
-|-------:|----------|
-| 0 – 20 | ✅ Safe |
-| 21 – 50 | ⚠️ Suspicious |
-| 51 – 100 | 🚨 Phishing |
-
----
-
 # 🚀 Future Improvements
 
 - Machine Learning-based phishing detection
